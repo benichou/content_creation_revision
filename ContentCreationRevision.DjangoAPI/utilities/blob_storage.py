@@ -55,8 +55,8 @@ def get_onboarding_file(file_name, token):
         "byte_io": BytesIO(file_response.content)
     }
 def get_blob_file(token: str, file_name: str, api_type: Literal["document_analyzer", 
-                                                                "deloitte_voice", 
-                                                                "deloitte_voice_docling_transformers"] = 
+                                                                "Content_voice", 
+                                                                "Content_voice_docling_transformers"] = 
                                                                 "document_analyzer") -> BytesIO:
     """
     Retrieves a file from a blob storage based on the specified API type.
@@ -64,7 +64,7 @@ def get_blob_file(token: str, file_name: str, api_type: Literal["document_analyz
     Args:
         token (str): The authorization token required for accessing the blob storage.
         file_name (str): The name of the file to download.
-        api_type (Literal["document_analyzer", "deloitte_voice", "deloitte_voice_docling_transformers"]):
+        api_type (Literal["document_analyzer", "Content_voice", "Content_voice_docling_transformers"]):
             The type of API determining the URL and parameters for retrieval. Defaults to "document_analyzer".
  
     Returns:
@@ -78,14 +78,14 @@ def get_blob_file(token: str, file_name: str, api_type: Literal["document_analyz
         params = {
             "fileName"    : file_name,
         }
-    if api_type == "deloitte_voice":
+    if api_type == "Content_voice":
         url =settings.DVOICE_DOWNLOAD_DOCUMENT_URL
         params = {
         "container"   : settings.DVOICE_CONTAINER_NAME,
         "folderName"  : file_name.split("/")[0] + "/" + settings.DVOICE_DOWNLOAD_FOLDER,
         "fileName"    : file_name.split("/")[1],
         }
-    if api_type == "deloitte_voice_docling_transformers":
+    if api_type == "Content_voice_docling_transformers":
         url = settings.DVOICE_DOWNLOAD_DOCUMENT_URL
         params = {
         "container"   : settings.DVOICE_TRANSFORMERS_CONTAINER_NAME,

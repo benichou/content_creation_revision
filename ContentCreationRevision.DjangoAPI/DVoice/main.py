@@ -40,7 +40,7 @@ logger.addHandler(handler)
 
 class DVoiceReviser():
     """
-    A class to process Deloitte Voice revisions by analyzing documents, applying formatting rules,
+    A class to process Content Voice revisions by analyzing documents, applying formatting rules,
     and generating revised versions with explanations.
     """
     def __init__(self, post_request_data: Dict[str, Any]) -> None:
@@ -79,14 +79,14 @@ class DVoiceReviser():
             print(f"Folder '{folder_path}' does not exist.") 
            
            
-    def _conduct_deloitte_voice_revision_processing(
+    def _conduct_Content_voice_revision_processing(
         self,
         markdown_extract_repo: Dict[str, str],
         additional_instructions: str,
         style_modification: Dict[str, bool]
     ) -> Tuple[Dict[str, str], Dict[str, str]]:
         """
-        Conducts Deloitte Voice revision processing, applying chunking, layout reconstruction,
+        Conducts Content Voice revision processing, applying chunking, layout reconstruction,
         classification, and guideline-based revisions.
  
         Args:
@@ -109,7 +109,7 @@ class DVoiceReviser():
         reconstructed_file_repo = reconstruct_revised_layout_chunk_into_file(chunk_revised_layout_output_raw) ## quick concatenation of the chunks
         # Second chunking after layout reconstruction
         chunked_documents_post_layout = chunk_documents_cohesively(reconstructed_file_repo) # second chunking after layout reconstruction
-        # Classify chunks based on Deloitte Voice guidelines
+        # Classify chunks based on Content Voice guidelines
         file_chunks_classification_repo = chunk_classification(chunked_documents_post_layout, self.post_request_data["token"]) # classify whether the input is to be considered for DVoice
         ## TODO: for next iteration load the checklist and grade whether the documents already comply with the checklist
         # HEART OF THE REVISION PROCESS: Apply guideline-based revisions
@@ -128,7 +128,7 @@ class DVoiceReviser():
 
     def run_DVoice_revision(self) -> None:
         """
-        Runs the Deloitte Voice revision workflow by processing uploaded files or manual input,
+        Runs the Content Voice revision workflow by processing uploaded files or manual input,
         applying necessary transformations, and storing revised documents.
 
         Updates thread flag to handle asyn threading.
@@ -182,7 +182,7 @@ class DVoiceReviser():
             
             # Perform the revision processing
             reconstructed_revised_file_repo, \
-                captured_modification_explanation_repo = self._conduct_deloitte_voice_revision_processing(markdown_extract_repo,
+                captured_modification_explanation_repo = self._conduct_Content_voice_revision_processing(markdown_extract_repo,
                                                                                                           additional_instructions,
                                                                                                           style_modification)
             ## if additional instructions have been submitted by the user through the front end
@@ -197,7 +197,7 @@ class DVoiceReviser():
                 markdown_extract_repo_extra = parse_manual_input(additional_content, self.post_request_data["token"])
                 ## conduct revision processing on the additional content that has just been generated
                 reconstructed_revised_file_repo_extra, \
-                    captured_modification_explanation_repo_extra = self._conduct_deloitte_voice_revision_processing(markdown_extract_repo_extra,
+                    captured_modification_explanation_repo_extra = self._conduct_Content_voice_revision_processing(markdown_extract_repo_extra,
                                                                                                                     additional_instructions,
                                                                                                                     style_modification)
                 ## add to existing file the additional content
@@ -226,7 +226,7 @@ class DVoiceReviser():
             print(f"Revised files and associated locations: {saved_revision_path_repo}")
             end_time = time.time()
             processing_time = end_time - start_time
-            print(f"Deloitte Voice Revision of {number_of_files} files took {processing_time} seconds \
+            print(f"Content Voice Revision of {number_of_files} files took {processing_time} seconds \
                 that is {processing_time/number_of_files} seconds")
             ## if manual input save with a hard coded file name
             if "manualInput" in self.post_request_data:
@@ -283,9 +283,9 @@ class DVoiceReviser():
 ## TODO: MAKE SURE TO TRANSLATE TO ENGLISH ALL parameters from branding requirements in case it is not in english ## TODO
 class DVoiceCreator(DVoiceReviser):
     """
-    A class to process Deloitte Voice creation by analyzing the uploaded documents, applying formatting rules,
+    A class to process Content Voice creation by analyzing the uploaded documents, applying formatting rules,
     creating the content through either of 1. summarization 2. rewriting or 3. retrieval and applying the guideline
-    revisions mandated by Deloitte Marketing to have Deloitte Compliant content.
+    revisions mandated by Content Marketing to have Content Compliant content.
     If no files are uploaded by the user, the processing goes into direct LLM API call to generate the content 
     directly.
     """

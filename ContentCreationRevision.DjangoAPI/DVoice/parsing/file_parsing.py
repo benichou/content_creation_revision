@@ -91,7 +91,7 @@ def parse_files(input_document: List[Dict[str, Any]],
             # Define input and output filenames
             output_tensor_path = DOCLING_TRANSFORMER_MODEL_PATH + llm_directory_path + tensor_name
             if not os.path.exists(output_tensor_path): # if no tensor exist
-                llm_layout_tensor = get_blob_file(token, tensor_name, api_type = "deloitte_voice_docling_transformers")
+                llm_layout_tensor = get_blob_file(token, tensor_name, api_type = "Content_voice_docling_transformers")
                 if DEBUG:
                     logger.info(f"✅DOWNLOADING TENSORS: Tensor {tensor_name} has been downloaded succesfully")
                 save_tensor_from_blob_to_directory(llm_layout_tensor, output_tensor_path, tensor_name) # save tensor in directory

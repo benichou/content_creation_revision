@@ -124,19 +124,19 @@ def answer_query_with_context(question, closest_docs, token, selected_model):
     token_count_completion = 0
     
     """
-    Only use openai if deloitte documetns are retrived. 
-    If no documetns are retrieved then Deloitte response will be an empty string.
+    Only use openai if Content documetns are retrived. 
+    If no documetns are retrieved then Content response will be an empty string.
     """
     if chosen_sections:
 
 
         """
-        Generated the prompt for deloitte questions.
+        Generated the prompt for Content questions.
         """
         prompt =  header + f"**\nContent:**\n{chosen_sections}" + "\n\n **Question:** " + question  +"**Answer:**"       
         
         """
-        Get answer based on deloitte documents.
+        Get answer based on Content documents.
         """ 
         message = []
         message.append({
@@ -148,7 +148,7 @@ def answer_query_with_context(question, closest_docs, token, selected_model):
             "content": prompt
         })
 
-        # model_responce          = get_gpt4_32k_completion(deloitte_message, token)
+        # model_responce          = get_gpt4_32k_completion(Content_message, token)
         raw_response            = get_gpt_completion(message, token, selected_model)
         response                = raw_response["choices"][0]["message"]["content"]
         token_count_prompt      = raw_response["usage"]["prompt_tokens"]
@@ -161,7 +161,7 @@ def answer_query_with_context(question, closest_docs, token, selected_model):
         
 
     """
-    structure and return string with Pretrain model answer and answer generated based on relevant Deloitte documents. 
+    structure and return string with Pretrain model answer and answer generated based on relevant Content documents. 
     """
     return {
                 "text"                   : response,

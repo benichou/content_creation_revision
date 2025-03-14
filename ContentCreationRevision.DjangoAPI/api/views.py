@@ -1,30 +1,15 @@
 import os, sys
 import traceback
 import threading
-import concurrent.futures
 import pandas as pd
-import tiktoken
-import pickle
-from collections                              import defaultdict
 from rest_framework.views                     import APIView
 from rest_framework.response                  import Response
-from utilities.redis_cache                    import RedisCache
 from azure.identity                           import DefaultAzureCredential, ChainedTokenCredential, AzureCliCredential
 from django.conf                              import settings
-from utilities.ai_search                      import ai_search_retrieve_docs, index_exists
 from utilities.blob_storage                   import get_blob_file
-from utilities.doc_process                    import analyze_txt, analyze_vtt, analyze_docx, analyze_pdf, analyze_pptx, analyze_xls, analyze_html
-from utilities.openai_utils.openai_embedding import openai_create_embedding
-from utilities.openai_utils.process_prompt   import get_classification, get_token_count
-from utilities.openai_utils.process_prompt   import answer_query_with_context, answer_query_with_summarization
 from utilities.cosmos_process                import update_file_thread_flag
-from utilities.openai_utils.prompt           import summarize_prompt
 from utilities.chromadb                      import ChromaDBHandler
-from utilities.data_ingestion.data_ingestor  import DataIngestor
-from utilities.app_data_config               import AppData
-from langchain.text_splitter                 import RecursiveCharacterTextSplitter
 from rest_framework                          import status
-from api.authentication                      import AzureADAuthentication
 from pathlib                                 import Path
 from typing                                  import Dict, Any
 
@@ -263,7 +248,7 @@ class DVoiceCreationAPIView(APIView):
         Args:
             post_message (Dict[str, Any]): The processed user request data containing necessary parameters and downloaded file in the form of Byte IO
             Note: During testing, you can test this class by calling this specific django api view. Details in the postman 
-            collection in Content.Ca.DBotBeta.DjangoAPI\\DVoice\\assets\\postman_collection (in this repo)
+            collection in ContentCreationRevision.Ca.DBotBeta.DjangoAPI\\DVoice\\assets\\postman_collection (in this repo)
         """
         from DVoice.main import DVoiceCreator
         creator = DVoiceCreator(post_message) # initializes the creator class

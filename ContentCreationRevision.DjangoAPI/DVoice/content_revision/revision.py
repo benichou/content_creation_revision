@@ -10,7 +10,7 @@ from DVoice.utilities.llm_structured_output import GuidelinesWithAdditionalUserI
 
 from DVoice.prompt.prompt_repo import OUTPUT_AFTER_LAYOUT_REVISION_PROMPT
 from DVoice.prompt.prompt_repo import GUIDELINE_LAYOUT_REVISION_PROMPT, GUIDELINE_WRITING_PRINCIPLES_PROMPT
-from DVoice.prompt.prompt_repo import OUTPUT_AFTER_FIRST_REVISION_PROMPT, GUIDELINE_REFERRING_TO_DELOITTE_PROMPT
+from DVoice.prompt.prompt_repo import OUTPUT_AFTER_FIRST_REVISION_PROMPT, GUIDELINE_REFERRING_TO_Content_PROMPT
 from DVoice.prompt.prompt_repo import OUTPUT_AFTER_SECOND_REVISION_PROMPT, GUIDELINE_REFERRING_TO_EFFECTIVE_WRITING_PROMPT
 from DVoice.prompt.prompt_repo import OUTPUT_AFTER_THIRD_REVISION_PROMPT, OUTPUT_AFTER_FOURTH_REVISION_PROMPT
 from DVoice.prompt.prompt_repo import OUTPUT_AFTER_FIFTH_REVISION_PROMPT
@@ -323,14 +323,14 @@ def generate_revision_prompts(additional_instructions: str) -> List[PromptTempla
                             
                             Some Context:
                               Note we were provided 4 guidelines for the revision guideline stored here:
-                             - Deloitte.Ca.DBotBeta.DjangoAPI\DVoice\guidelines\guideline_files\guidelines
+                             - Content.Ca.DBotBeta.DjangoAPI\DVoice\guidelines\guideline_files\guidelines
                              That is why we have 4 baseline parsers. 
 
                              Also Note the above static guidelines have been provided
-                              by Deloitte Marketing and these guidelines are handled here:
-                              Deloitte.Ca.DBotBeta.DjangoAPI\DVoice\guidelines\creating_actionable_guideline_summary_for_prompt\guideline_prompt_creation.py
+                              by Content Marketing and these guidelines are handled here:
+                              Content.Ca.DBotBeta.DjangoAPI\DVoice\guidelines\creating_actionable_guideline_summary_for_prompt\guideline_prompt_creation.py
                               and stored there: 
-                              - Deloitte.Ca.DBotBeta.DjangoAPI\DVoice\guidelines\summary_guidelines
+                              - Content.Ca.DBotBeta.DjangoAPI\DVoice\guidelines\summary_guidelines
  
     Notes:
         - The function tracks and logs the time taken to generate the prompts.
@@ -345,7 +345,7 @@ def generate_revision_prompts(additional_instructions: str) -> List[PromptTempla
     first_revision_query = "\n\n" + MODEL_PERSONA_APPLICATION_OF_GUIDELINES + "\n\n" + GUIDELINE_WRITING_PRINCIPLES_PROMPT
     first_revision_prompt = PromptTemplate(template=f"{first_revision_query}")
     # second guideline
-    second_revision_query = "\n\n" + MODEL_PERSONA_APPLICATION_OF_GUIDELINES + "\n\n" + GUIDELINE_REFERRING_TO_DELOITTE_PROMPT
+    second_revision_query = "\n\n" + MODEL_PERSONA_APPLICATION_OF_GUIDELINES + "\n\n" + GUIDELINE_REFERRING_TO_Content_PROMPT
     second_revision_prompt = PromptTemplate(template=f"{second_revision_query}")
     # third guideline 
     third_revision_query = "\n\n" + MODEL_PERSONA_APPLICATION_OF_GUIDELINES + "\n\n" + GUIDELINE_REFERRING_TO_EFFECTIVE_WRITING_PROMPT
@@ -645,7 +645,7 @@ def define_parallelized_sequential_chain(
 ) -> Any:
     """
     Initializes and defines a parallelized sequential processing chain for revising 
-    document chunks according to Deloitte Guidelines.
+    document chunks according to Content Guidelines.
  
     This function sets up a sequential rephraser chain (one revision stage after the other), applies revision guidelines, 
     and then runs the sequential chain processing in parallel for each chunk using Langchain's LCEL. 
@@ -690,7 +690,7 @@ def define_parallelized_sequential_chain(
     # Generate output prompts for parsing expected output
     output_prompts_list = generate_output_prompts()
     
-    ## # Define sequential chain for applying Deloitte guidelines thoroughly
+    ## # Define sequential chain for applying Content guidelines thoroughly
     sequential_rephraser_chain = define_chain(model, 
                                               parsers_list,
                                               partial_format_document,
@@ -709,7 +709,7 @@ def define_parallelized_sequential_chain(
                         # previousline: save for each Langchain Document a new langchain document that 
                         # has the application of guidelines and the explanation of the application of the guidelines and
                         # where in the document chunk were they applied
-    ).with_config(run_name="Revise the Document (chunk) as per Deloitte Guidelines (return doc)")
+    ).with_config(run_name="Revise the Document (chunk) as per Content Guidelines (return doc)")
     # The finalized full revision chain
     # Map the parallelized processing across document chunks
     map_parallelized_sequential_chain_doc_rephrasing = (parallelized_sequential_rephraser_as_doc_chain.map()).\

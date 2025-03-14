@@ -16,9 +16,6 @@ import logging
 from typing import List, Optional, Any, Dict, Tuple
 
 
-# from dotenv import load_dotenv
-# load_dotenv(dotenv_path="Deloitte.Ca.DBotBeta.DjangoAPI\\DVoice\\.env") ## to remove when we go to dev
-
 ## LOGGING CAPABILITIES
 
 logger = logging.getLogger()

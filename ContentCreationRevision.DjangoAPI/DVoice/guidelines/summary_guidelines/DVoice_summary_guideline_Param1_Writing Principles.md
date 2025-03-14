@@ -1,6 +1,6 @@
-## Conveying the Deloitte Brand Experience in Writing
+## Conveying the Content Brand Experience in Writing
 
-Deloitte aims to reflect its brand attributes—confident, clear, and human—across all communications to differentiate itself in the market. These attributes guide writing principles to ensure impactful and engaging content.
+The Company aims to reflect its brand attributes—confident, clear, and human—across all communications to differentiate itself in the market. These attributes guide writing principles to ensure impactful and engaging content.
 
 ### Brand Attributes and Writing Principles
 
@@ -12,10 +12,10 @@ Deloitte aims to reflect its brand attributes—confident, clear, and human—ac
 
 Focusing on brand experience fosters emotional connections with audiences. Storytelling is a key tool, making complex concepts relatable and memorable.
 
-### Inclusion and Deloitte Voice
+### Inclusion and Content Voice
 
-Deloitte emphasizes inclusive language to unite rather than divide. Avoid jargon and use language that respects diversity, such as preferred pronouns and culturally sensitive terms. Examples of non-inclusive terms include "Hey guys" and "blacklist," which should be replaced with inclusive alternatives like "folks" and "denylist."
+The Company emphasizes inclusive language to unite rather than divide. Avoid jargon and use language that respects diversity, such as preferred pronouns and culturally sensitive terms. Examples of non-inclusive terms include "Hey guys" and "blacklist," which should be replaced with inclusive alternatives like "folks" and "denylist."
 
 ### Fostering Inclusion
 
-Language evolves, and Deloitte encourages awareness of terms with oppressive histories. Inclusive writing prioritizes clear communication and respects diverse perspectives, ensuring all audiences feel valued and understood.
+Language evolves, and the Company encourages awareness of terms with oppressive histories. Inclusive writing prioritizes clear communication and respects diverse perspectives, ensuring all audiences feel valued and understood.

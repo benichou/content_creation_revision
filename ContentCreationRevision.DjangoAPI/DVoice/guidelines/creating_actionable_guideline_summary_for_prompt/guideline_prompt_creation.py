@@ -27,7 +27,7 @@ def create_guidelines(guideline_markdown_extract_repo: Dict[str, str]) -> Dict[s
     """
     guideline_summaries_repo = {}
     for file_path, guideline_markdown_text in guideline_markdown_extract_repo.items():
-        if Path(file_path).stem == "Deloitte Voice_2021_Param4_Editorial Style Guide":
+        if Path(file_path).stem == "Content Voice_2021_Param4_Editorial Style Guide":
             print("The markdown guideline has been crafted manually for now otherwise it is way too long")
             guideline_summaries, execution_time = generate_response_from_text_input(GUIDELINE_EXTRACTION_PROMPT,
                                                                                     MODEL_PERSONA_TEXT_EXTRACTION, 
@@ -66,7 +66,7 @@ def save_markdown_summaries(summary_repo: Dict[str, str]) -> None:
         None: This function does not return any value. It saves the summarized markdown content
               to files in the specified directory.
     """
-    guideline_prefix = "Deloitte Voice_2021_"
+    guideline_prefix = "Content Voice_2021_"
     for file_name, markdown_guideline in summary_repo.items():
         md_path = Path(os.getcwd() + f"DVoiceDjangoAPI\\DVoice\\guidelines\\summary_guidelines\\")
         os.makedirs(md_path, exist_ok=True)

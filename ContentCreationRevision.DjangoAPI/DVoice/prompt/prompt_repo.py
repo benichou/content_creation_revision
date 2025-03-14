@@ -162,7 +162,7 @@ def manage_vanilla_guideline_prompt(md_markdown_guideline, style_guide_type = ""
 
 GUIDELINE_WRITING_PRINCIPLES_PROMPT = manage_vanilla_guideline_prompt(writing_guideline_1, 
                                                                       style_guide_type = "that aims to create a \
-                                                                      cohesive Deloitte brand experience \
+                                                                      cohesive Content brand experience \
                                                                       in writing")
                                     
 OUTPUT_AFTER_FIRST_REVISION_PROMPT = """
@@ -184,11 +184,11 @@ OUTPUT_AFTER_FIRST_REVISION_PROMPT = """
 
                                      """
 ## LOCAL SOLUTION IS FINE
-writing_guideline_2 = read_markdown_file("DVoiceDjangoAPI\\DVoice\\guidelines\\summary_guidelines\\DVoice_summary_guideline_Param2_Referring to Deloitte.md")
+writing_guideline_2 = read_markdown_file("DVoiceDjangoAPI\\DVoice\\guidelines\\summary_guidelines\\DVoice_summary_guideline_Param2_Referring to Content.md")
                                   
 
-GUIDELINE_REFERRING_TO_DELOITTE_PROMPT = manage_vanilla_guideline_prompt(writing_guideline_2, 
-                                                                         style_guide_type = """that aims to ensure Deloitte as a brand name
+GUIDELINE_REFERRING_TO_Content_PROMPT = manage_vanilla_guideline_prompt(writing_guideline_2, 
+                                                                         style_guide_type = """that aims to ensure Content as a brand name
                                                                                           is mentionned correctly in writing""")
 
 OUTPUT_AFTER_SECOND_REVISION_PROMPT = """

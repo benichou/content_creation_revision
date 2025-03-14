@@ -76,8 +76,8 @@ API_VERSION_MODEL_DICTIONARY = {"TEXT_MODEL_GPT3_5"                     : "2024-
                                 "MULTIMODAL_MODEL_GPT4O_128K_DVOICE"    : "2024-10-21", ## supports structured output
                                 }
 EMBEDDING_DEPLOYMENT_NAME = config["embedding_deploymment"]
-EMBEDDING_DEPLOYMENT_API_VERSION_DICTIONARY = {'DTEMBADA2': '2023-05-15',
-                                               'TEXTEMBEDDINGSMALL': '2023-05-15'
+EMBEDDING_DEPLOYMENT_API_VERSION_DICTIONARY = {'<choose from config.json>': '2023-05-15',
+                                               '<choose from config.json>': '2023-05-15'
                                                }         
 
 API_BASE               = config["api_base"]
@@ -125,12 +125,7 @@ CHUNK_SIZE    = config['chunk_size']
 CHUNK_OVERLAP = config['chunk_overlap']
 K_DOCS        = config['k_documents']
 SEARCH_TYPE   = config['search_type']
-#Azure Search
-AZ_AI_SEARCH_NAME       = config["az_ai_search_name"]
-AZ_AI_SEARCH_ENDPOINT   = f"https://{AZ_AI_SEARCH_NAME}.search.windows.net/"
-AZ_AI_SEARCH_INDEX_NAME = config["az_ai_index_name"]
-VECTOR_STORE_TYPE       = "az ai search"
-AI_SEARCH_THRESHOLD     = config["ai_search_threshold"]
+
 
 #ChromaDB Collection Name
 COLLECTION_NAME = "collection"
@@ -193,8 +188,6 @@ ROOT_URLCONF = 'home.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "https://caw2110299.ca.deloitte.com:44312",
-    "http://localhost:3000", 
     
 ]
 
