@@ -9,7 +9,7 @@
            margin-left: auto;
            margin-right: auto;
            width: 30%;"
-    src=""
+    src="https://github.com/benichou/content_creation_revision/blob/main/ContentCreationRevision.DjangoAPI/DVoice/assets/img/dvoice_repo_img.png"
     alt="Our logo">
     </img>
  
