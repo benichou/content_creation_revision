@@ -59,7 +59,8 @@ This repo aims to build the base capabilities to:
  
 The solution is called DVoice (aka Content Voice), because it tried to create documents following a standarized Content style policy.
 
-We have 4 static guidelines around different components of language and document style in the following folder: ContentCreationRevision.DjangoAPI\DVoice\guidelines\summary_guidelines
+We have 4 static guidelines around different components of language and document style in the following folder: ContentCreationRevision.DjangoAPI\DVoice\guidelines\summary_guidelines.
+
 We use them through prompt engineering and Langchain Expression Language to ensure content creation and revision respects Content Standards.
  
 For version `0`, base parsing, markdown extraction, summarization, retrieval, and direct LLM generation capabilities have been added with
